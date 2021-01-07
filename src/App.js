@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
-import Counter from "./components/Counter";
+import ImageSlider from "./components/ImageSlider";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Counter />
+        <ImageSlider />
       </div>
     );
   }
