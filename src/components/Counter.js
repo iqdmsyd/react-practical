@@ -5,6 +5,14 @@ export default class Counter extends Component {
     count: 0,
   };
 
+  componentDidMount() {
+    console.log("mounting...");
+  }
+
+  componentWillUnmount() {
+    console.log("unmounting...");
+  }
+
   increment = () => {
     this.setState({ count: this.state.count + 1 });
   };
