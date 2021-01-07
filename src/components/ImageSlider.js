@@ -26,15 +26,11 @@ export default class ImageSlider extends Component {
   render() {
     return (
       <div>
-        {this.state.images[this.state.idx] ? (
-          <img
-            style={{ width: 200, height: 200 }}
-            src={this.state.images[this.state.idx]}
-            alt="kim-minju"
-          />
-        ) : (
-          <div>image not found</div>
-        )}
+        <img
+          style={{ width: 200, height: 200 }}
+          src={this.state.images[this.state.idx]}
+          alt="kim-minju"
+        />
         <div>
           <button onClick={this.handlePrev}>prev</button>
           <button onClick={this.handleNext}>next</button>
