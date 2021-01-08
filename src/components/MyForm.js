@@ -9,52 +9,57 @@ export default class MyForm extends Component {
   };
 
   handleChange = (event) => {
-    this.setState({ name: event.target.value });
-  };
-
-  handleChangeTextarea = (event) => {
-    this.setState({ address: event.target.value });
-  };
-
-  handleCheck = (event) => {
-    this.setState({ rememberMe: event.target.checked });
-  };
-
-  handleSelect = (event) => {
-    this.setState({ title: event.target.value });
+    const isCheckbox = event.target.type === "checkbox";
+    this.setState({
+      [event.target.name]: isCheckbox
+        ? event.target.checked
+        : event.target.value,
+    });
   };
 
   handleSubmit = (event) => {
+    // prevent from refreshing the page
+    event.preventDefault();
     console.log(this.state);
   };
 
   render() {
     return (
-      <div>
+      <form onSubmit={this.handleSubmit}>
         <div>
-          <input value={this.state.name} onChange={this.handleChange} />
+          <input
+            name="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
         </div>
         <div>
           <textarea
+            name="address"
             value={this.state.address}
-            onChange={this.handleChangeTextarea}
+            onChange={this.handleChange}
           />
         </div>
         <div>
           <input
+            name="rememberMe"
             type="checkbox"
             checked={this.state.rememberMe}
-            onChange={this.handleCheck}
+            onChange={this.handleChange}
           />
         </div>
         <div>
-          <select value={this.state.title} onChange={this.handleSelect}>
+          <select
+            name="title"
+            value={this.state.title}
+            onChange={this.handleChange}
+          >
             <option>Mr.</option>
             <option>Mrs.</option>
           </select>
         </div>
-        <button onClick={this.handleSubmit}>submit</button>
-      </div>
+        <button type="submit">submit</button>
+      </form>
     );
   }
 }
